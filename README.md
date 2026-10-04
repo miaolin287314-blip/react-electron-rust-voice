@@ -32,4 +32,19 @@ npm run start:dev
 
 ## Rust/WASM
 
-`rust_wasm` 暂作为后续 Rust/WASM 功能的目录，目前没有源码或构建流程。
+首次构建前安装 wasm target 和 `wasm-pack`：
+
+```bash
+rustup target add wasm32-unknown-unknown
+cargo install wasm-pack
+```
+
+在项目根目录运行：
+
+```bash
+cd rust_wasm
+cargo test
+wasm-pack build --target web
+```
+
+构建产物会生成在 `rust_wasm/pkg/`，可在支持 ES modules 的 Web 环境中导入使用。
